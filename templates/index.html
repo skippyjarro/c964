@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Stroke Predictor</title>
+
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div id="main-content">
+            <h1>Stroke Predictor</h1>
+            <form action="{{ url_for('predict') }}" method="post">
+                <label for="Gender">Please select your biological sex</label>
+                <select id="Sex" name="Sex">
+                    <option value="0">Female</option>
+                    <option value="1">Male</option>
+                </select>
+                <br/>
+                <label for="Age">Enter for age.</label>
+                <input type="number" name="Age" placeholder="Age" required="required"/>
+                <br/>
+                <label for="Hypertension">Have you been diagnosed with high blood pressure?</label>
+                <select id="Hypertension" name="Hypertension">
+                    <option value="0">No</option>
+                    <option value="1">yes</option>
+                </select>
+                <br/>
+                <label for="Heart_Disease">Have you been diagnosed with heart disease?</label>
+                <select id="Heart_Disease" name="Heart_Disease">
+                    <option value="0">No</option>
+                    <option value="1">yes</option>
+                </select>
+                <br/>
+                <label for="Ever_Married">Have you been married?</label>
+                <select id="Ever_Married" name="Ever_Married">
+                    <option value="0">No</option>
+                    <option value="1">yes</option>
+                </select>
+                <br/>
+                <label for="Work_Type">What type of work do you do?</label>
+                <select id="Work_Type" name="Work_Type">
+                    <option value="2">Private Employer</option>
+                    <option value="0">Government Job</option>
+                    <option value="3">Self-employed</option>
+                    <option value="1">Unemployed</option>
+                    <option value="4">Child under 18</option>
+                </select>
+                <br/>
+                <label for="Residence_type">Where is your home located?</label>
+                <select id="Residence_type" name="Residence_type">
+                    <option value="1">Urban</option>
+                    <option value="0">Rural</option>
+                </select>
+                <br/>
+                <label for="avg_glucose_level">What is your average blood glucose level? (if known)</label>
+                <input type="number" name="avg_glucose_level" placeholder="Average Blood Glucose"/>
+                <br/>
+                <label for="BMI">What is your BMI?</label>
+                <input type="number" name="bmi" placeholder="BMI"/>
+                <br/>
+                <label for="Smoking_Status">Please select your smoking status.</label>
+                <select id="Smoking_Status" name="Smoking_Status">
+                    <option value="2">Never Smoked</option>
+                    <option value="1">Former Smoker</option>
+                    <option value="3">Current Smoker</option>
+                </select>
+                <br/>
+                <br/>
+                <input type="submit">
+            </form>
+
+            <br/>
+            <br/>
+            <div id="prediction">
+                {{ prediction_text }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
