@@ -1,10 +1,14 @@
 body {
     text-align: left;
     margin: 0;
-    padding: 10px;
     font-family: sans-serif;
     font-size: 18px;
     line-height: 2;
+}
+
+p {
+    font-size: 16px;
+    font-weight: bold;
 }
 
 #prediction {
@@ -13,6 +17,7 @@ body {
 }
 
 .container {
-    display: flex;
-    justify-content: center;
+    width: 30%;
+    margin: auto;
+    max-width: 50%;
 }

@@ -9,6 +9,12 @@
     <div class="container">
         <div id="main-content">
             <h1>Stroke Predictor</h1>
+            <a href="static/images/featuregraph.png" target="_blank">Feature Importance Graph</a>
+            <p>Welcome to the Stroke Predictor based on machine learning. Enter your information to get a prediction of
+                your risk of stroke.</p>
+            <p>DISCLAIMER: This site is for educational purposes only and should not be used in place of consulting with
+                your personal physician. By using this site, you acknowledge that the site creator cannot be held liable
+                for any adverse affects that may result from the information provided by this site.</p>
             <form action="{{ url_for('predict') }}" method="post">
                 <label for="Gender">Please select your biological sex</label>
                 <select id="Sex" name="Sex">
@@ -75,5 +81,6 @@
                 {{ prediction_text }}
             </div>
         </div>
+
     </div>
 {% endblock %}
