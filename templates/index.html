@@ -12,8 +12,8 @@
             <form action="{{ url_for('predict') }}" method="post">
                 <label for="Gender">Please select your biological sex</label>
                 <select id="Sex" name="Sex">
-                    <option value="0">Female</option>
-                    <option value="1">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Male">Male</option>
                 </select>
                 <br/>
                 <label for="Age">Enter for age.</label>
@@ -33,23 +33,23 @@
                 <br/>
                 <label for="Ever_Married">Have you been married?</label>
                 <select id="Ever_Married" name="Ever_Married">
-                    <option value="0">No</option>
-                    <option value="1">yes</option>
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
                 </select>
                 <br/>
                 <label for="Work_Type">What type of work do you do?</label>
                 <select id="Work_Type" name="Work_Type">
-                    <option value="2">Private Employer</option>
-                    <option value="0">Government Job</option>
-                    <option value="3">Self-employed</option>
-                    <option value="1">Unemployed</option>
-                    <option value="4">Child under 18</option>
+                    <option value="Private">Private Employer</option>
+                    <option value="Govt_job">Government Job</option>
+                    <option value="Self-employed">Self-employed</option>
+                    <option value="Never_worked">Unemployed</option>
+                    <option value="children">Child under 18</option>
                 </select>
                 <br/>
                 <label for="Residence_type">Where is your home located?</label>
                 <select id="Residence_type" name="Residence_type">
-                    <option value="1">Urban</option>
-                    <option value="0">Rural</option>
+                    <option value="Urban">Urban</option>
+                    <option value="Rural">Rural</option>
                 </select>
                 <br/>
                 <label for="avg_glucose_level">What is your average blood glucose level? (if known)</label>
@@ -60,9 +60,9 @@
                 <br/>
                 <label for="Smoking_Status">Please select your smoking status.</label>
                 <select id="Smoking_Status" name="Smoking_Status">
-                    <option value="2">Never Smoked</option>
-                    <option value="1">Former Smoker</option>
-                    <option value="3">Current Smoker</option>
+                    <option value="never smoked">Never Smoked</option>
+                    <option value="formerly smoked">Former Smoker</option>
+                    <option value="smokes">Current Smoker</option>
                 </select>
                 <br/>
                 <br/>

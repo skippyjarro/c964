@@ -1,6 +1,6 @@
 import pickle
 
-import numpy as np
+import pandas as pd
 from flask import Flask, render_template, request
 
 app = Flask(__name__)
@@ -14,9 +14,19 @@ def index():  # put application's code here
 @app.route('/predict', methods=['POST'])
 def predict():
     model = createModel()
-    form_features = [x for x in request.form.values()]
-    features = [np.array(form_features)]
+    gender = request.form.get('Sex')
+    age = int(request.form.get('Age'))
+    hypertension = int(request.form.get('Hypertension'))
+    heart_disease = int(request.form.get('Heart_Disease'))
+    ever_married = request.form.get('Ever_Married')
+    work_type = request.form.get('Work_Type')
+    residence_type = request.form.get('Residence_type')
+    avg_glucose_level = float(request.form.get('avg_glucose_level'))
+    bmi = int(request.form.get('bmi'))
+    smoking_status = request.form.get('Smoking_Status')
+    features = pd.DataFrame([[gender, age, hypertension, heart_disease, ever_married, work_type, residence_type, avg_glucose_level, bmi, smoking_status]], columns=['gender', 'age', 'hypertension', 'heart_disease', 'ever_married', 'work_type', 'Residence_type', 'avg_glucose_level', 'bmi', 'smoking_status'])
     prediction = model.predict(features)
+    print(prediction)
     if prediction == 1:
         result = 'You are at high risk of Stroke.  Please consult your physician.'
     else:
