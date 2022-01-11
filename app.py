@@ -23,7 +23,11 @@ def predict():
     ever_married = request.form.get('Ever_Married')
     work_type = request.form.get('Work_Type')
     residence_type = request.form.get('Residence_type')
-    avg_glucose_level = float(request.form.get('avg_glucose_level'))
+    avg_glucose_level = request.form.get('avg_glucose_level')
+    if avg_glucose_level == '':
+        avg_glucose_level = 100
+    else:
+        avg_glucose_level = float(avg_glucose_level)
     bmi = int(request.form.get('bmi'))
     smoking_status = request.form.get('Smoking_Status')
     features = pd.DataFrame([[gender, age, hypertension, heart_disease, ever_married, work_type, residence_type,

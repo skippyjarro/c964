@@ -62,7 +62,7 @@
                 <input type="number" name="avg_glucose_level" placeholder="Average Blood Glucose"/>
                 <br/>
                 <label for="BMI">What is your BMI?</label>
-                <input type="number" name="bmi" placeholder="BMI"/>
+                <input type="number" name="bmi" placeholder="BMI" required="required"/>
                 <br/>
                 <label for="Smoking_Status">Please select your smoking status.</label>
                 <select id="Smoking_Status" name="Smoking_Status">
@@ -75,7 +75,6 @@
                 <input type="submit">
             </form>
 
-            <br/>
             <br/>
             <div id="prediction">
                 {{ prediction_text }}
