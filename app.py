@@ -25,7 +25,7 @@ def predict():
     residence_type = request.form.get('Residence_type')
     avg_glucose_level = request.form.get('avg_glucose_level')
     if avg_glucose_level == '':
-        avg_glucose_level = 100
+        avg_glucose_level = 85
     else:
         avg_glucose_level = float(avg_glucose_level)
     bmi = int(request.form.get('bmi'))
