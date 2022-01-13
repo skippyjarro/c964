@@ -1,9 +1,20 @@
 import pickle
 
+import numpy as np
 import pandas as pd
 from flask import Flask, render_template, request
 
 app = Flask(__name__)
+
+raw_data = pd.read_csv('model/stroke.csv')
+df = pd.DataFrame(raw_data, columns=['gender', 'age', 'hypertension', 'heart_disease', 'ever_married', 'work_type',
+                                     'Residence_type', 'avg_glucose_level', 'bmi', 'smoking_status', 'stroke'])
+df = df.astype(
+    {'gender': 'category', 'hypertension': 'category', 'heart_disease': 'category', 'ever_married': 'category',
+     'work_type': 'category', 'Residence_type': 'category', 'smoking_status': 'category'})
+X = df[['gender', 'age', 'hypertension', 'heart_disease', 'ever_married', 'work_type', 'Residence_type',
+        'avg_glucose_level', 'bmi', 'smoking_status']]
+y = df['stroke']
 
 # create model
 model = pickle.load(open('model/model.pkl', 'rb'))
@@ -41,6 +52,24 @@ def predict():
         result = 'Your risk of Stroke is low.'
 
     return render_template('index.html', prediction_text=format(result))
+
+
+@app.route('/dashboard', methods=['POST', 'GET'])
+def dashboard():
+    return render_template('dashboard.html')
+
+
+@app.route('/graph', methods=['POST'])
+def graph():
+    feature = [request.form.get('dashboard_type')]
+    if feature is None:
+        feature = ['gender']
+    labels = [label for label in np.unique(df[feature])]
+    dataset = df[feature].value_counts()
+    data = []
+    for label in labels:
+        data.append(dataset.get(label))
+    return render_template('dashboard.html', labels=labels, data=data, feature=feature)
 
 
 if __name__ == '__main__':

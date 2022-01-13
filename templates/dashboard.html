@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"
+            integrity="sha512-TW5s0IT/IppJtu76UbysrBH9Hy/5X41OTAbQuffZFU6lQ1rdcLHzpU5BzVvr/YFykoiMYZVWlr/PX1mDcfM9Qg=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <title>Dashboard</title>
+{% endblock %}
+
+{% block body %}
+            <div id="menu">
+        <ul>
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+            <li><a href="about.asp">About</a></li>
+        </ul>
+    </div>
+    <div class="container">
+        <form action="{{ url_for('graph') }}" method="post">
+            <select id="dashboard_type" name="dashboard_type" selected="{{ feature }}">
+                <option value="gender">Sex</option>
+                <option value="Residence_type">Residence Type</option>
+                <option value="smoking_status">Smoking Status</option>
+            </select>
+            <input type="submit" value="Run Report">
+        </form>
+    </div>
+    <canvas id="myChart" width="800" height="600" align="center"></canvas>
+    {% block javascript %}
+        <script>
+            const ctx = document.getElementById('myChart').getContext('2d');
+            let myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: {{ labels | safe }},
+                    datasets: [{
+                        label: {{ feature | safe }},
+                        data: {{ data | safe }},
+                        backgroundColor: [
+                            'rgba(255, 0, 0, 1)',
+                            'rgba(0, 255, 0, 1)',
+                            'rgba(0, 0, 255, 1)',
+                            'rgba(0, 255, 255, 1)'
+                        ],
+                        fill: true,
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        },
+                    },
+                    responsive: false
+
+                }
+            });
+        </script>
+    {% endblock %}
+{% endblock %}

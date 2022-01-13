@@ -12,7 +12,6 @@ from sklearn.model_selection import train_test_split
 raw_data = pd.read_csv('stroke.csv')
 df = pd.DataFrame(raw_data, columns=['gender', 'age', 'hypertension', 'heart_disease', 'ever_married', 'work_type', 'Residence_type', 'avg_glucose_level', 'bmi', 'smoking_status', 'stroke'])
 df = df.astype({'gender': 'category', 'hypertension': 'category', 'heart_disease': 'category', 'ever_married': 'category', 'work_type': 'category', 'Residence_type': 'category', 'smoking_status': 'category'})
-#OneHotEncoder(handle_unknown='ignore').fit_transform(df['gender', 'hypertension', 'heart_disease', 'ever_married', 'work_type', 'Residence_type', 'smoking_status'])
 X = df[['gender', 'age', 'hypertension', 'heart_disease', 'ever_married', 'work_type', 'Residence_type', 'avg_glucose_level', 'bmi', 'smoking_status']]
 y = df['stroke']
 

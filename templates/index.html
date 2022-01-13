@@ -6,7 +6,15 @@
 {% endblock %}
 
 {% block body %}
+        <div id="menu">
+        <ul>
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+            <li><a href="about.asp">About</a></li>
+        </ul>
+    </div>
     <div class="container">
+
         <div id="main-content">
             <h1>Stroke Predictor</h1>
             <a href="static/images/featuregraph.png" target="_blank">Feature Importance Graph</a>
