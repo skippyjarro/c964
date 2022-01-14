@@ -62,14 +62,22 @@ def dashboard():
 @app.route('/graph', methods=['POST'])
 def graph():
     feature = [request.form.get('dashboard_type')]
+    legend = None
     if feature is None:
         feature = ['gender']
+    if feature == ['gender']:
+        legend = ['Sex']
+    elif feature == ['Residence_type']:
+        legend = ['Residence Type']
+    elif feature == ['smoking_status']:
+        legend = ['Smoking Status']
     labels = [label for label in np.unique(df[feature])]
     dataset = df[feature].value_counts()
     data = []
     for label in labels:
         data.append(dataset.get(label))
-    return render_template('dashboard.html', labels=labels, data=data, feature=feature)
+    print(legend)
+    return render_template('dashboard.html', labels=labels, data=data, feature=legend)
 
 
 if __name__ == '__main__':
