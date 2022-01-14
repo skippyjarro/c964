@@ -8,23 +8,30 @@
 {% endblock %}
 
 {% block body %}
-            <div id="menu">
+    <div id="menu">
         <ul>
             <li><a href="{{ url_for('index') }}">Home</a></li>
             <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
         </ul>
     </div>
     <div class="container">
-        <form action="{{ url_for('graph') }}" method="post">
-            <select id="dashboard_type" name="dashboard_type" selected="{{ feature }}">
-                <option value="gender">Sex</option>
-                <option value="Residence_type">Residence Type</option>
-                <option value="smoking_status">Smoking Status</option>
-            </select>
-            <input type="submit" value="Run Report">
-        </form>
+    <h1>Dashboard</h1>
+        <p>Select a characteristic to see a breakdown of records by type.</p>
+        <div>
+            <form action="{{ url_for('graph') }}" method="post">
+                <select id="dashboard_type" name="dashboard_type" selected="{{ feature }}">
+                    <option value="gender">Sex</option>
+                    <option value="Residence_type">Residence Type</option>
+                    <option value="smoking_status">Smoking Status</option>
+                </select>
+                <input type="submit" value="Run Report">
+            </form>
+        </div>
+        <div>
+            <canvas id="myChart" width="800" height="600"></canvas>
+        </div>
     </div>
-    <canvas id="myChart" width="800" height="600" align="center"></canvas>
+
     {% block javascript %}
         <script>
             const ctx = document.getElementById('myChart').getContext('2d');
