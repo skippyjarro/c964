@@ -84,7 +84,7 @@ def graph():
 
 @app.route('/accuracy', methods=['GET'])
 def accuracy():
-    accuracy = str(int(mod.getAccuracyScore() * 100)) + '%'
+    accuracy = str(round(mod.getAccuracyScore() * 100, 2)) + '%'
     return render_template('index.html', accuracy_text=accuracy)
 
 
