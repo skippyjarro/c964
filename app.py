@@ -3,6 +3,7 @@ import pickle
 import numpy as np
 import pandas as pd
 from flask import Flask, render_template, request
+import model.model as mod
 
 app = Flask(__name__)
 
@@ -46,7 +47,8 @@ def predict():
                             columns=['gender', 'age', 'hypertension', 'heart_disease', 'ever_married', 'work_type',
                                      'Residence_type', 'avg_glucose_level', 'bmi', 'smoking_status'])
     prediction = model.predict(features)
-    if prediction == 1:
+    print(prediction)
+    if prediction[0] == 1:
         result = 'You are at high risk of Stroke.  Please consult your physician.'
     else:
         result = 'Your risk of Stroke is low.'
@@ -78,6 +80,12 @@ def graph():
         data.append(dataset.get(label))
     print(legend)
     return render_template('dashboard.html', labels=labels, data=data, feature=legend)
+
+
+@app.route('/accuracy', methods=['GET'])
+def accuracy():
+    accuracy = str(int(mod.getAccuracyScore() * 100)) + '%'
+    return render_template('index.html', accuracy_text=accuracy)
 
 
 if __name__ == '__main__':

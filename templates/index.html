@@ -18,7 +18,9 @@
             <h1>Stroke Predictor</h1>
             <a href="static/images/featuregraph.png" target="_blank">Feature Importance Graph</a>
             <br/>
-            <a href="static/images/accuracy.png" target="_blank">Accuracy Scores</a>
+            <a href="{{ url_for('accuracy') }}">Accuracy Score</a>
+            <br/>
+            {{ accuracy_text }}
             <p>Welcome to the Stroke Predictor based on machine learning. Enter your information to get a prediction of
                 your risk of stroke.</p>
             <p>DISCLAIMER: This site is for educational purposes only and should not be used in place of consulting with
