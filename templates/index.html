@@ -27,14 +27,14 @@
                 your personal physician. By using this site, you acknowledge that the site creator cannot be held liable
                 for any adverse affects that may result from the information provided by this site.</p>
             <form action="{{ url_for('predict') }}" method="post">
-                <label for="Gender">Please select your biological sex</label>
+                <label for="Sex">Please select your biological sex</label>
                 <select id="Sex" name="Sex">
                     <option value="Female">Female</option>
                     <option value="Male">Male</option>
                 </select>
                 <br/>
                 <label for="Age">Enter for age.</label>
-                <input type="number" name="Age" placeholder="Age" required="required"/>
+                <input type="number" min=0 step=0.01 name="Age" placeholder="Age" required="required"/>
                 <br/>
                 <label for="Hypertension">Have you been diagnosed with high blood pressure?</label>
                 <select id="Hypertension" name="Hypertension">
@@ -70,10 +70,10 @@
                 </select>
                 <br/>
                 <label for="avg_glucose_level">What is your average blood glucose level? (if known)</label>
-                <input type="number" name="avg_glucose_level" placeholder="Average Blood Glucose"/>
+                <input type="number" min=0 step=0.01 name="avg_glucose_level" placeholder="Average Blood Glucose"/>
                 <br/>
                 <label for="BMI">What is your BMI?</label>
-                <input type="number" name="bmi" placeholder="BMI" required="required"/>
+                <input type="number" min=0 step=0.01 name="bmi" placeholder="BMI" required="required"/>
                 <br/>
                 <label for="Smoking_Status">Please select your smoking status.</label>
                 <select id="Smoking_Status" name="Smoking_Status">
